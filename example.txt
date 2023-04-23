@@ -1,0 +1,39 @@
+  public void SetupBoard() {
+        // Set the size and title of the JFrame
+        setSize(600, 600);
+        setTitle("Chess Board");
+
+        // Create a JPanel to hold the chess board
+        JPanel chessBoard = new JPanel();
+        chessBoard.setLayout(new GridLayout(8, 8));
+
+        // Create an 8x8 array of JPanels to represent the chess board squares
+        JPanel[][] squares = new JPanel[8][8];
+
+        // Loop through each square and set its color
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                squares[i][j] = new JPanel();
+
+                // Alternate the color of the squares to create a checkerboard pattern
+                if ((i + j) % 2 == 0) {
+                    squares[i][j].setBackground(Color.WHITE);
+                } else {
+                    squares[i][j].setBackground(Color.BLACK);
+                }
+
+                // Add a border to each square to create a grid-like appearance
+                squares[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+                // Add the square to the chess board panel
+                chessBoard.add(squares[i][j]);
+            }
+        }
+
+        // Add the chess board panel to the JFrame
+        add(chessBoard);
+
+        // Set other properties of the JFrame, such as the visibility and exit behavior
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
