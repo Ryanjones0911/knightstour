@@ -4,7 +4,7 @@ public class Board
 
     public Board()
     {
-        this.board = new int[4][4];
+        this.board = new int[5][5];
         for(int i = 0; i < board.length; i++)
         {
             for(int j = 0; j < board.length; j++)

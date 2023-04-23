@@ -4,7 +4,10 @@ public class KnightsTour
     {
        Knight knight = new Knight();
 
-       knight.solve();
+       if(!knight.solve())
+       {
+        System.out.println("No tour possible");
+       }
 
 
     }
