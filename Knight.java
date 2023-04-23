@@ -28,12 +28,12 @@ public class Knight
         board.setSpaceVisited(x, y, count);
         for(int i = 0; i < xMoves.length; i++)
         {
-            if(count == 16)
+            if(count == 25)
             {
                 return true;
             }
 
-            else if ((x + xMoves[i] >= 0 && x + xMoves[i] < 4) && (y + yMoves[i] >=0 && y + yMoves[i] < 4) && !board.isSpaceVisited(x + xMoves[i], y + yMoves[i]))
+            else if ((x + xMoves[i] >= 0 && x + xMoves[i] < 5) && (y + yMoves[i] >=0 && y + yMoves[i] < 5) && !board.isSpaceVisited(x + xMoves[i], y + yMoves[i]))
             {
                 count++;
                 x += xMoves[i];
@@ -52,7 +52,6 @@ public class Knight
                 }
             }
             board.render();
-            //nextKey.nextLine();
         }
         return false;
     }
