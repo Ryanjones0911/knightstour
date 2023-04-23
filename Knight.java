@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Knight
 {
     private int[] xMoves = {-2, -1, 1, 2, -2, -1, 1, 2};
@@ -5,6 +7,7 @@ public class Knight
     private int x;
     private int y;
     private int count = 1;
+    Scanner nextKey = new Scanner(System.in);
     Board board;
 
     public Knight()
@@ -22,23 +25,19 @@ public class Knight
     }
     public boolean solve()
     {
-        board.render();
+        board.setSpaceVisited(x, y, count);
         for(int i = 0; i < xMoves.length; i++)
         {
-            int newX = x + xMoves[i];
-            int newY = y + yMoves[i];
-            board.setSpaceVisited(x, y, count);
-
-            if(count == 64)
+            if(count == 16)
             {
                 return true;
             }
 
-            else if ((newX >= 0 && newX < 8) && (newY >=0 && newY < 8) && !board.isSpaceVisited(newX, newY))
+            else if ((x + xMoves[i] >= 0 && x + xMoves[i] < 4) && (y + yMoves[i] >=0 && y + yMoves[i] < 4) && !board.isSpaceVisited(x + xMoves[i], y + yMoves[i]))
             {
+                count++;
                 x += xMoves[i];
                 y += yMoves[i];
-                count++;
                 board.setSpaceVisited(x, y, count);
                 if(solve())
                 {
@@ -46,13 +45,14 @@ public class Knight
                 }
                 else
                 {
+                    board.setSpaceUnvisited(x, y);
+                    count--;
                     x -= xMoves[i];
                     y -= yMoves[i];
-                    count--;
-                    board.setSpaceUnvisited(x, y);
                 }
             }
             board.render();
+            //nextKey.nextLine();
         }
         return false;
     }
