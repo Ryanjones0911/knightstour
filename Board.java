@@ -1,3 +1,7 @@
+/* this is a helper class that creates a chessboard of n * n size for use with the Knight class.
+ * handles all board-related operations, such as clearing a space and marking a space as visited
+ */
+
 public class Board 
 {
     private int[][] board;
@@ -14,6 +18,8 @@ public class Board
         }
     }
 
+    //There's probably a more elegant way to render out the board, but this
+    //approach works well enough. 
     public void render()
     {
         for(int i = 0; i < board.length; i++)
@@ -32,6 +38,9 @@ public class Board
         board[y][x] = count;
     }
 
+    //when you backtrack from an invalid move, it's necessary to set the previously visited
+    //space back to unvisited. I thought it best to make this it's own method, rather than
+    //cram it into setSpaceVisited
     public void setSpaceUnvisited(int x, int y)
     {
         board[y][x] = 0;
